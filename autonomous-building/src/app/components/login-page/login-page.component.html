@@ -28,11 +28,11 @@
 					</div>
                     <div class="mt-5">
                         <label class="block text-md mb-2" for="email">Email</label>
-                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="email" name="password" placeholder="example@email.com" [(ngModel)]="email">
+                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="email" name="password" placeholder="example@email.com" [(ngModel)]="user.userName">
                     </div>
 					<div class="my-3">
 						<label class="block text-md mb-2" for="password">Password</label>
-						<input class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="password" name="password" placeholder="password" [(ngModel)]="password">
+						<input class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="password" name="password" placeholder="password" [(ngModel)]="user.password">
                     </div>
                     <div class="flex justify-end">
                         <span class="text-sm text-blue-700 cursor-pointer">Forgot password?</span>
@@ -51,11 +51,11 @@
 					</div>
                     <div class="mt-5">
                         <label class="block text-md mb-2" for="email">Email</label>
-                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="email" name="password" placeholder="example@email.com" [(ngModel)]="email">
+                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="email" name="password" placeholder="example@email.com" [(ngModel)]="user.userName">
                     </div>
 					<div class="my-3">
 						<label class="block text-md mb-2" for="password">Password</label>
-						<input class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="password" name="password" placeholder="password" [(ngModel)]="password" (ngModelChange)="validatePassword()">
+						<input class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="password" name="password" placeholder="password" [(ngModel)]="user.password" (ngModelChange)="validatePassword()">
                     </div>
                     <div class="flex justify-evenly my-3">
                         <span class="h-2 w-1/5 rounded" [ngClass]="(strength > 0) ? 'bg-red-500': 'bg-white bg-opacity-50'"></span>
@@ -63,7 +63,7 @@
                         <span class="h-2 w-1/5 rounded" [ngClass]="(strength > 2) ? 'bg-green-500': 'bg-white bg-opacity-50'"></span>
                         <span class="h-2 w-1/5 rounded" [ngClass]="(strength > 3) ? 'bg-green-700': 'bg-white bg-opacity-50'"></span>
                     </div>
-                    <div *ngIf="(password.length > 0)"> <!--This will be the user response for validation-->
+                    <div *ngIf="(user.password.length > 0)"> <!--This will be the user response for validation-->
                         <ul>
                             <li>
                                 {{validations[0] ? '✔' : '❌'}} must be at least 5 characters

@@ -4,8 +4,10 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { LoginPageComponent } from './login-page/login-page.component';
+import { LandingPageComponent } from './components/landing-page/landing-page.component';
+import { LoginPageComponent } from './components/login-page/login-page.component';
+
+import { SecurityService } from './services/Security.service';
 
 @NgModule({
   declarations: [
