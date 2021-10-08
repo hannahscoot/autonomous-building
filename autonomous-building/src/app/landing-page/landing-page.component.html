@@ -1,14 +1,28 @@
-<h1 class="my-8 text-center text-6xl font-bold">
-    <span class="text-green-600">
-        TailwindCSS
-    </span> 
-    and 
-    <span class="text-red-600">
-        Angular
-    </span> 
-    is cool to use!
-</h1>
-<p class="text-center text-3xl">
-    Thanks for reading!
-    {{title}} project
-</p>
+<div class="min-h-screen min-w-screen bg-no-repeat bg-cover bg-center bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500">
+    <div class="bg-opacity-20 bg-white min-h-screen min-w-screen">
+        <div class="mr-6 mt-4" style="position:fixed; top:0; right:0">
+            <button class="border p-1 px-3" (click)="logout()">
+                Log out 
+            </button>
+        </div>
+        <div class="flex h-screen justify-center items-center">
+            <div>
+                <div class="text-center text-3xl">
+                    Welcome! {{title}} project
+                </div>
+                <div class="text-center my-16">
+                    <button class="w-10 h-10 px-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+                            <path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="ml-4 mb-4" style="position:fixed; bottom:0">
+            <span>
+                Copyright 2021 Ⓒ 
+            </span>
+        </div>
+    </div>
+</div>
