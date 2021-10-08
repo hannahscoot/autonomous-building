@@ -1,30 +1,29 @@
-<div class="min-h-screen bg-no-repeat bg-cover bg-center bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500">
-	<div class="flex justify-between">
-        <div class="flex h-screen w-1/2">
-            <div class="m-auto" >
-                <div class="bg-blue-300 w-24 h-24 mb-16 text-center"></div>
-                <div class="flex justify-center">
+<div class="min-h-screen min-w-screen bg-no-repeat bg-cover bg-center bg-gradient-to-b from-yellow-400 via-red-500 to-pink-500">
+	<div class="flex-wrap lg:flex">
+        <div class="flex lg:w-1/2 justify-center">
+            <div class="lg:mt-56">
+                <div class="mt-2 lg:mb-16 mb-8 w-full flex justify-center">
+                    <div class="xl:bg-pink-300 lg:bg-pink-400 md:bg-pink-500 sm:bg-pink-600 bg-pink-700 w-24 h-24 p-2">
+                        Logo
+                    </div>
+                </div>
+                <div class="justify-center md:flex hidden">
                     <div class="text-4xl font-light tracking-wider">
                         Demo Modern Login Page
                     </div>
                 </div>
-                <div class="flex justify-center mt-5">
+                <div class="justify-center mt-5 md:flex hidden">
                     <div class="text-xl font-light tracking-wider">
                         Some useful descriptive subtext
                     </div>
                 </div>
             </div>
-            <div class="m-auto">
-                <span>
-                    Copyright 2021 Ⓒ 
-                </span>
-            </div>
         </div>
-		<div class="bg-white min-h-screen w-1/2 flex justify-center items-center">
-			<div>
+		<div class="lg:min-h-screen lg:w-1/2 flex justify-center items-center">
+			<div class="bg-white bg-opacity-40 sm:px-28 sm:py-24 p-16 m-8 rounded-lg" *ngIf="!isLogin">
 				<form>
 					<div>
-						<span class="text-sm text-gray-900">Welcome back</span>
+						<span class="text text-gray-900">Welcome back</span>
 						<h1 class="text-2xl font-bold">Login to your account</h1>
 					</div>
                     <div class="mt-5">
@@ -42,8 +41,59 @@
                         <button class="mt-4 mb-3 w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded-md transition duration-100">Login</button>
                     </div>
 				</form>
-				<p class="mt-8"> Dont have an account? <span class="cursor-pointer text-sm text-blue-600"> Sign up here</span></p>
+				<p class="mt-8"> Dont have an account? <span class="cursor-pointer text-sm text-blue-600" (click)='newuser()'> Sign up here</span></p>
+			</div>
+            <div class="bg-white bg-opacity-40 sm:px-28 sm:py-24 p-16 m-8 rounded-lg" *ngIf="isLogin">
+				<form>
+					<div>
+						<span class="text text-gray-900">Welcome</span>
+						<h1 class="text-2xl font-bold">Create a new account </h1>
+					</div>
+                    <div class="mt-5">
+                        <label class="block text-md mb-2" for="email">Email</label>
+                        <input class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="email" name="password" placeholder="example@email.com">
+                    </div>
+					<div class="my-3">
+						<label class="block text-md mb-2" for="password">Password</label>
+						<input class="px-4 w-full border-2 py-2 rounded-md text-sm outline-none" type="password" name="password" placeholder="password" [(ngModel)]="password" (ngModelChange)="validatePassword()">
+                    </div>
+                    <div class="flex justify-evenly my-3">
+                        <span class="h-2 w-1/5 rounded" [ngClass]="(strength > 0) ? 'bg-red-500': 'bg-white bg-opacity-50'"></span>
+                        <span class="h-2 w-1/5 rounded" [ngClass]="(strength > 1) ? 'bg-yellow-500': 'bg-white bg-opacity-50'"></span>
+                        <span class="h-2 w-1/5 rounded" [ngClass]="(strength > 2) ? 'bg-green-500': 'bg-white bg-opacity-50'"></span>
+                        <span class="h-2 w-1/5 rounded" [ngClass]="(strength > 3) ? 'bg-green-700': 'bg-white bg-opacity-50'"></span>
+                    </div>
+                    <div *ngIf="(password.length > 0)"> <!--This will be the user response for validation-->
+                        <ul>
+                            <li>
+                                {{validations[0] ? '✔' : '❌'}} must be at least 5 characters
+                            </li>
+                            <li>
+                                {{validations[1] ? '✔' : '❌'}} must contain a capital letter
+                            </li>
+                            <li>
+                                {{validations[2] ? '✔' : '❌'}} must contain a number
+                            </li>
+                            <li>
+                                {{validations[3] ? '✔' : '❌'}} must contain at least one of $&+,:;=?@#*
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="">
+                        <button class="mt-4 mb-3 w-full text-white py-2 rounded-md transition duration-100" 
+                            [ngClass]="(strength > 3) ? 'bg-blue-500 hover:bg-blue-600': 'bg-blue-500 bg-opacity-80 cursor-not-allowed'" 
+                            [disabled]="(strength < 4)">
+                                Register
+                        </button>
+                    </div>
+				</form>
+				<p class="mt-8"> Have an account? <span class="cursor-pointer text-sm text-blue-600" (click)='newuser()'> Sign in here</span></p>
 			</div>
 		</div>
 	</div>
+    <div class="ml-4 mb-4" style="position:fixed; bottom:0">
+        <span>
+            Copyright 2021 Ⓒ 
+        </span>
+    </div>
 </div>
